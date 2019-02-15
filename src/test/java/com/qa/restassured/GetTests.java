@@ -14,7 +14,7 @@ public class GetTests extends BaseClass{
 	@Test
 	public void getUsers() {
 		ValidatableResponse response = given().
-	                                   get(BaseClass.setUp("users_endpoint")).
+	                                   get(setUp("users_endpoint")).
 		                               then().statusCode(200).and().
 		                               log().all();
 		response.body("page", is(2),"per_page", equalTo(3),"total", is(12), "total_pages", equalTo(4));
@@ -29,7 +29,7 @@ public class GetTests extends BaseClass{
 	@Test
 	public void getSingleUser() {
 		
-		ValidatableResponse response =  given().when().get(BaseClass.setUp("user2_endpoint")).then().statusCode(200).and().log().all();
+		ValidatableResponse response =  given().when().get(setUp("user2_endpoint")).then().statusCode(RESPONSE_STATUS_CODE_200).log().all();
 	    response.body("data.id", is(2),"data.first_name", is("Janet"),"data.last_name",is("Weaver"),"data.avatar",is("https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"));
 	}
 	
